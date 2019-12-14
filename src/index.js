@@ -83,9 +83,13 @@ class Game extends React.Component {
             const desc = move ?
                 'Go to move #' + move + ' (r:' + parseInt(bx/3 +1) + ' ,c:' + parseInt(bx%3 +1) + ')':
                 'Go to start';
+                console.log(desc);
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button style={this.state.stepNumber === move ? {fontWeight:'bold'} : {fontWeight:'normal'}}
+                            onClick={() => this.jumpTo(move)}>
+                        {desc}
+                    </button>
                 </li>
             );
         });
