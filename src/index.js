@@ -51,10 +51,10 @@ class Game extends React.Component {
             xIsNext: true,
         }
     }
-    jumpTo(step){
+    jumpTo(step) {
         this.setState({
             stepNumber: step,
-            xIsNext: (step%2) === 0,
+            xIsNext: (step % 2) === 0,
         })
     }
     handleClick(i) {
@@ -81,13 +81,12 @@ class Game extends React.Component {
         const moves = history.map((step, move) => {
             const bx = step.boxChecked;
             const desc = move ?
-                'Go to move #' + move + ' (r:' + parseInt(bx/3 +1) + ' ,c:' + parseInt(bx%3 +1) + ')':
+                'Go to move #' + move + ' (r:' + parseInt(bx / 3 + 1) + ' ,c:' + parseInt(bx % 3 + 1) + ')' :
                 'Go to start';
-                console.log(desc);
             return (
                 <li key={move}>
-                    <button style={this.state.stepNumber === move ? {fontWeight:'bold'} : {fontWeight:'normal'}}
-                            onClick={() => this.jumpTo(move)}>
+                    <button style={this.state.stepNumber === move ? { fontWeight: 'bold' } : { fontWeight: 'normal' }}
+                        onClick={() => this.jumpTo(move)}>
                         {desc}
                     </button>
                 </li>
@@ -98,7 +97,7 @@ class Game extends React.Component {
         if (winner) {
             status = 'Winner ' + winner;
         }
-        else if(this.state.stepNumber === 9){
+        else if (this.state.stepNumber === 9) {
             status = 'Result is a draw';
         }
         else {
